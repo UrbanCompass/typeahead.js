@@ -204,6 +204,11 @@ var TypeaheadView = (function() {
           suggestion = byClick ?
             e.data : this.dropdownView.getSuggestionUnderCursor();
 
+      // sjlu: This allows us to no matter what, get the first element
+      // of the typeahead.js to prevent user input issues and handle
+      // the return key.
+      suggestion = suggestion ? suggestion : this.dropdownView.getFirstSuggestion();
+
       if (suggestion) {
         this.inputView.setInputValue(suggestion.value);
 
